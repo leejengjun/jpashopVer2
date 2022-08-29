@@ -17,7 +17,7 @@ public class Member {
 
     private String name;
 
-    @Embedded
+    @Embedded   //값타입 매핑
     private Address address;
 
     @OneToMany(mappedBy = "member")
