@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,7 +40,14 @@ public class MemberController {
 
         memberService.join(member);
         return "redirect:/";
-
     }
 
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
+    }
+    // 추후 API를 만들때는 절대로 엔티티를 넘겨서는 안 된다!.
+    // 엔티티에 로직을 추가하면 API 스펙이 변하기 때문.
 }
