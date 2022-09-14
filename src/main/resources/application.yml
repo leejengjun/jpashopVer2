@@ -12,6 +12,7 @@ spring:
       hibernate:
 #        show_sql: true
         format_sql: true
+        default_batch_fetch_size: 100 #in 쿼리의 개수?! 값 설정 중요함! // 예를 들어 batch_fetch_size가 100개인데 데이터가 1000개라면 10번의 루프를 돈다. why? 한번에 인쿼리 속 처리가 100개이므로!
 
 logging.level:
   org.hibernate.SQL: debug
